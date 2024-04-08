@@ -16,6 +16,29 @@ function memoizedAddTo80(n) {
   };
 }
 
-console.log("1", memoizedAddTo80(5));
-console.log("2", memoizedAddTo80(6));
-console.log("3", memoizedAddTo80(5));
+const memoized = memoizedAddTo80();
+
+console.log("1", memoized(5));
+console.log("2", memoized(6));
+console.log("3", memoized(5));
+
+function fibonacciDynamic() {
+  // O(n) instead of O(2^n)
+  let cache = {};
+  return function fib(n) {
+    if (n in cache) {
+      return cache[n];
+    } else {
+      if (n < 2) {
+        return n;
+      } else {
+        cache[n] = fib(n - 1) + fib(n - 2);
+        return cache[n];
+      }
+    }
+  };
+}
+
+const fasterFib = fibonacciDynamic();
+
+console.log(fasterFib(100));
