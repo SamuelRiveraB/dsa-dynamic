@@ -42,3 +42,13 @@ function fibonacciDynamic() {
 const fasterFib = fibonacciDynamic();
 
 console.log(fasterFib(100));
+
+function fibonacciNew(n) {
+  let ans = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    ans.push(ans[i - 2] + ans[i - 1]);
+  }
+  return ans.pop();
+}
+
+console.log(fibonacciNew(100));
